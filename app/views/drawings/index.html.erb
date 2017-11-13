@@ -1,41 +1,37 @@
 <div>
-	<div class="pull-right">
-		<h3>Welcome <%= @user.name %> !!!</h3>
-		<%= hidden_field_tag :user_id, @user.id %>
-	</div>
-	<div class="pull-left">
-		<div class="color-palet">
-			<h3>Color Palette</h3>
-		  <span>Click a box to select color</span>
-		  <ul>
-		    <% @colors.each do |color| %>
-		      <li style="background-color: <%= color.hex_code %>;" data-color-id="<%= color.id %>" data-code="<%= color.hex_code %>" class="color-palete-li">&nbsp;</li>
-		    <% end %>
-		    <li class="clear-fix">&nbsp;</li>
-		    <li><span>No Fill</span></li>
-		    <li class="no-fill">&nbsp;</li>
-		  </ul>
-		  <span>Selected Color: </span>
-		  <ul>
-		    <li class="selected-color" data-code="", data-color-id="">&nbsp;</li>
-		  </ul>
-		</div>
+  <div class="pull-right">
+    <h3>Welcome <%= @user.name %> !!!</h3>
+    <%= hidden_field_tag :user_id, @user.id %>
+  </div>
+  <div class="pull-left">
+    <div class="color-palet">
+      <h3>Color Palette</h3>
+      <span>Click a box to select color</span>
+      <ul>
+        <% @colors.each do |color| %>
+          <li style="background-color: <%= color.hex_code %>;" data-color-id="<%= color.id %>" data-code="<%= color.hex_code %>" class="color-palete-li">&nbsp;</li>
+        <% end %>
+        <li class="clear-fix">&nbsp;</li>
+        <li><span>No Fill</span></li>
+        <li class="no-fill">&nbsp;</li>
+      </ul>
+      <span>Selected Color: </span>
+      <ul>
+        <li class="selected-color" data-code="", data-color-id="">&nbsp;</li>
+      </ul>
+    </div>
 
-		<div class="color-grid">
-		  <h3>Color Grid</h3>
-		  <span>Select color form the above color palete and click a box below to color it</span>
-			<ul style="min-height: 40px;"><li id="cell-info">
-				<h5></h5>
-				<!-- <span style="width: 20px;">&nbsp;</sapn> -->
-				</li>
-			</ul>
-		  <ul>
-		    <% @grid_squares.each do |cell| %>
-		      <li id="cell-<%= cell.id %>" class="grid-cell" data-cell-id="<%= cell.id %>" data-clr-id="<%= cell.latest_color.try(:id) %>" style="background-color: <%= cell.latest_color.try(:hex_code) %>">&nbsp;</li>
-		    <% end %>
-		    <li class="clear-fix">&nbsp;</li>
-		  </ul>
-		</div>
-	</div>
-	<div class="clear-fix"></div>
+    <div class="color-grid">
+      <h3>Color Grid</h3>
+      <span>Select color form the above color palete and click a box below to color it</span>
+      <ul style="min-height: 40px;"><li id="cell-info"><h5></h5></li></ul>
+      <ul>
+        <% @grid_squares.each do |cell| %>
+          <li id="cell-<%= cell.id %>" class="grid-cell" data-cell-id="<%= cell.id %>" data-clr-id="<%= cell.color.try(:id) %>" style="background-color: <%= cell.color.try(:hex_code) %>">&nbsp;</li>
+        <% end %>
+        <li class="clear-fix">&nbsp;</li>
+      </ul>
+    </div>
+  </div>
+  <div class="clear-fix"></div>
 </div>

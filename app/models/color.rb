@@ -4,6 +4,7 @@ class Color < ApplicationRecord
 
   has_many :drawings
   has_many :grid_squares, through: :drawings
+  has_many :users, through: :drawings
 
   def most_recent_user
     self.users.last
