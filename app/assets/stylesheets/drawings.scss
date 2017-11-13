@@ -1,0 +1,42 @@
+.color-palet {
+  span {
+    font-size: 12px;
+  }
+  ul {
+    list-style: none;
+
+    .color-palete-li {
+      border: 1px;
+      float: left;
+      width: 20px;
+      cursor: pointer;
+    }
+    .no-fill {
+      border: 1px black solid;
+      width: 20px;
+      cursor: pointer;
+    }
+    .selected-color {
+      border: 1px black solid;
+      width: 20px;      
+    }
+  }
+}
+
+.color-grid {
+  span {
+    font-size: 12px;
+  }
+  ul {
+    list-style: none;
+    width: 440px;
+    max-width: 440px;
+    height: auto;
+    .grid-cell {
+      border: 1px black solid;
+      float: left;
+      width: 20px;
+    }
+  }
+}
+
