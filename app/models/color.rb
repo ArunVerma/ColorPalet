@@ -1,6 +1,6 @@
 class Color < ApplicationRecord
 
-  validates :name, :hex_code presence: true
+  validates :name, :hex_code, presence: true
 
   has_many :drawings
   has_many :grid_squares, through: :drawings

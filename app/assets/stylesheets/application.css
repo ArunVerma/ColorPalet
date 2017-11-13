@@ -13,7 +13,18 @@
  *= require_tree .
  *= require_self
  */
-
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
 .clear-fix {
   clear: both;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
 }
