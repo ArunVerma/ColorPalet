@@ -7,20 +7,23 @@ class DrawingsController < ApplicationController
 
   def create
     response = nil
+    drawing = nil
     if drawing_params[:color_id].present?
       drawing = Drawing.where(grid_square_id: drawing_params[:grid_square_id]).first
       if drawing.present?
         response = drawing.update_attributes(drawing_params)
       else
-        response = Drawing.new(drawing_params).save!
+        drawing = Drawing.new(drawing_params)
+        response = drawing.save!
       end
     else
       response = Drawing.where(grid_square_id: drawing_params[:grid_square_id]).first.destroy
     end
     if response
-      render json: {status: 200}
-    else
-      render json: {status: 500}
+      ActionCable.server.broadcast 'drawings',
+          color_code: drawing.present? ? drawing.color.hex_code : '',
+          cell_id: drawing_params[:grid_square_id]
+      head :ok
     end
   end
 

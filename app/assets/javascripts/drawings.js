@@ -23,19 +23,7 @@ $(document).ready(function() {
       $.ajax({
         type: 'POST',
         url: '/drawings',
-        data: {drawing : {user_id: userId, grid_square_id: cellId, color_id: colorId}},
-        dataType: 'json',
-        success: function(data) {
-          if(data.status == 200){
-            if(clr_code == 'no-fill'){
-              $('#cell-'+cellId).css('background-color', '');
-            }else{
-              $('#cell-'+cellId).css('background-color', clr_code);
-            }
-          }else{
-            alert("ERROR : Color can't be filled");
-          }
-        }
+        data: {drawing : {user_id: userId, grid_square_id: cellId, color_id: colorId}}
       })
     }else{
       alert("You have not selected any color. Please select one.")
